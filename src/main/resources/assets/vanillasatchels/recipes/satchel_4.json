@@ -1,0 +1,22 @@
+{
+	"type": "vanillasatchels:upgrade_shaped",
+	"result": {
+		"item": "vanillasatchels:satchel",
+		"data": 4
+	},
+	"pattern": [
+		" I ",
+		"IXI",
+		" I "
+	],
+	"key": {
+		"I": {
+			"type": "forge:ore_dict",
+			"ore": "gemEmerald"
+		},
+		"X": {
+			"item": "vanillasatchels:satchel",
+			"data": 3
+		}
+	}
+}

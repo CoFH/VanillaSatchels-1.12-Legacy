@@ -1,0 +1,84 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "builtin/generated",
+		"textures": {
+			"layer0": "vanillasatchels:items/satchel/satchel_0",
+			"layer1": "vanillasatchels:items/satchel/access_public",
+			"layer2": "vanillasatchels:items/blank",
+			"layer3": "vanillasatchels:items/blank"
+		},
+		"transform": "forge:default-item"
+	},
+	"variants": {
+		"access": {
+			"public": {
+				"textures": {
+					"layer1": "vanillasatchels:items/satchel/satchel_access_public"
+				}
+			},
+			"friends": {
+				"textures": {
+					"layer1": "vanillasatchels:items/satchel/satchel_access_friends"
+				}
+			},
+			"team": {
+				"textures": {
+					"layer1": "vanillasatchels:items/satchel/satchel_access_team"
+				}
+			},
+			"private": {
+				"textures": {
+					"layer1": "vanillasatchels:items/satchel/satchel_access_private"
+				}
+			}
+		},
+		"color0": {
+			"0": {
+
+			},
+			"1": {
+				"textures": {
+					"layer2": "vanillasatchels:items/satchel/satchel_color_0"
+				}
+			}
+		},
+		"color1": {
+			"0": {
+
+			},
+			"1": {
+				"textures": {
+					"layer3": "vanillasatchels:items/satchel/satchel_color_1"
+				}
+			}
+		},
+		"type": {
+			"standard0": {
+				"textures": {
+					"layer0": "vanillasatchels:items/satchel/satchel_0"
+				}
+			},
+			"standard1": {
+				"textures": {
+					"layer0": "vanillasatchels:items/satchel/satchel_1"
+				}
+			},
+			"standard2": {
+				"textures": {
+					"layer0": "vanillasatchels:items/satchel/satchel_2"
+				}
+			},
+			"standard3": {
+				"textures": {
+					"layer0": "vanillasatchels:items/satchel/satchel_3"
+				}
+			},
+			"standard4": {
+				"textures": {
+					"layer0": "vanillasatchels:items/satchel/satchel_4"
+				}
+			}
+		}
+	}
+}

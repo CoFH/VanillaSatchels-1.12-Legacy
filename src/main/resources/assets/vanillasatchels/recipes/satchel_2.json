@@ -1,0 +1,22 @@
+{
+	"type": "vanillasatchels:upgrade_shaped",
+	"result": {
+		"item": "vanillasatchels:satchel",
+		"data": 2
+	},
+	"pattern": [
+		" I ",
+		"IXI",
+		" I "
+	],
+	"key": {
+		"I": {
+			"type": "forge:ore_dict",
+			"ore": "ingotGold"
+		},
+		"X": {
+			"item": "vanillasatchels:satchel",
+			"data": 1
+		}
+	}
+}

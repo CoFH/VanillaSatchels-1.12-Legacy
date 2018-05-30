@@ -1,0 +1,19 @@
+[
+	{
+		"modid": "vanillasatchels",
+		"name": "CoFH: Vanilla+ Satchels",
+		"description": "A Vanilla Enhancement mod which adds bags which hold and can automatically collect items - in various vanilla materials.",
+		"version": "${version}",
+		"credits": "Team CoFH",
+		"logoFile": "assets/vanillasatchels/textures/logo.png",
+		"mcversion": "${mc_version}",
+		"url": "http://www.teamcofh.com",
+		"updateUrl": "",
+		"authorList": [ "Team CoFH" ],
+		"parent": "",
+		"screenshots": [],
+		"dependencies": [
+			"forge,cofhcore"
+		]
+	}
+]
