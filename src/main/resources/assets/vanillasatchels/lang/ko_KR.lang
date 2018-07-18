@@ -1,0 +1,26 @@
+#ko_KR
+
+info.vanillaplus.satchel.a.0=아이템을 저장하고 수집합니다. 보안을 설정할 수 있습니다.
+info.vanillaplus.satchel.a.1=인벤토리로 이동할 때 사용합니다.
+info.vanillaplus.satchel.a.2=구성을 위해 사용합니다.
+info.vanillaplus.satchel.a.c=단일 아이템을 무제한으로 저장합니다. 보안을 설정할 수 있습니다.
+info.vanillaplus.satchel.a.v=존재하지 않는 아이템을 제거합니다. 보안을 설정할 수 있습니다.
+info.vanillaplus.satchel.b.0=§b자동 수집을 하고 싶으면 (%s)을 누르세요.§r
+info.vanillaplus.satchel.b.1=§e자동 수집을 하고 싶지 않다면 (%s)을 누르세요.§r
+info.vanillaplus.satchel.c.0=자동 수집 비활성화
+info.vanillaplus.satchel.c.1=자동 수집 활성화
+
+item.vanillaplus.satchel.name=책가방
+item.vanillaplus.satchel.standard0.name=책가방
+item.vanillaplus.satchel.standard1.name=철 책가방
+item.vanillaplus.satchel.standard2.name=금 책가방
+item.vanillaplus.satchel.standard3.name=다이아몬드 책가방
+item.vanillaplus.satchel.standard4.name=에메랄드 책가방
+
+tab.vanillaplus.storage.enchant=저장고 용량 증가에 인첸트될 수 있습니다.
+
+tab.vanillaplus.storage.satchel.0=그것은 책가방입니다. 그것은 여러분이 더 많은 것들을 가지고 다닐 수 있게 해 줍니다.
+tab.vanillaplus.storage.satchel.1=일부 개체를 저장하지 않습니다.
+
+tab.vanillaplus.storage.satchel_filter.0=이 책가방에서 자동으로 픽업할 수 있는 아이템을 구성합니다.
+tab.vanillaplus.storage.satchel_filter.1=인벤토리를 
