@@ -431,7 +431,7 @@ public class ItemSatchel extends ItemMulti implements IInitializer, IColorableIt
 	private static void config() {
 
 		String category = "Item.Satchel";
-		enable = VanillaSatchels.CONFIG.get(category, "Enable", true);
+		enable = VanillaSatchels.CONFIG.get(category, "Enable", enable);
 	}
 
 	/* ENTRY */
