@@ -1,0 +1,26 @@
+#de_DE
+
+info.vanillaplus.satchel.a.0=Speichert und sammelt Items. Kann abgeschlossen werden.
+info.vanillaplus.satchel.a.1=SHIFT+Rechtsklick auf ein Inventar um es mitzunehmen.
+info.vanillaplus.satchel.a.2=SHIFT+Rechtsklick zum Konfigurieren.
+info.vanillaplus.satchel.a.c=Speichert unendlich viel von einem bestimmten Item. Kann abgeschlossen werden.
+info.vanillaplus.satchel.a.v=Tilgt Items von der Welt. Kann abgeschlossen werden.
+info.vanillaplus.satchel.b.0=§bDrücke (%s) um Auto-Aufsammeln zu aktivieren.§r
+info.vanillaplus.satchel.b.1=§eDrücke (%s) um Auto-Aufsammeln zu deaktivieren.§r
+info.vanillaplus.satchel.c.0=Auto-Aufsammeln deaktiviert
+info.vanillaplus.satchel.c.1=Auto-Aufsammeln aktiviert
+
+item.vanillaplus.satchel.name=Rucksack
+item.vanillaplus.satchel.standard0.name=Rucksack
+item.vanillaplus.satchel.standard1.name=Eisenrucksack
+item.vanillaplus.satchel.standard2.name=Goldrucksack
+item.vanillaplus.satchel.standard3.name=Diamantrucksack
+item.vanillaplus.satchel.standard4.name=Smaragdrucksack
+
+tab.vanillaplus.storage.enchant=Kann verzaubert werden um den Platz zu vergrößern.
+
+tab.vanillaplus.storage.satchel.0=Ein Rucksack. Damit kannst du mehr Dinge tragen.
+tab.vanillaplus.storage.satchel.1=Kann manche Items nicht speichern.
+
+tab.vanillaplus.storage.satchel_filter.0=Konfiguriere welche Items dieser Rucksack automatisch aufsammelt.
+tab.vanillaplus.storage.satchel_filter.1=Erobere dein Inventar zurück!
