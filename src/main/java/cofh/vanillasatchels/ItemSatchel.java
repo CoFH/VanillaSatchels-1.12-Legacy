@@ -23,6 +23,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -93,6 +94,12 @@ public class ItemSatchel extends ItemMulti implements IInitializer, IColorableIt
 		}
 		SecurityHelper.addAccessInformation(stack, tooltip);
 
+		if (isVoid(stack)) {
+			tooltip.add(StringHelper.getInfoText("info.vanillaplus.satchel.a.v"));
+			tooltip.add(StringHelper.getNoticeText("info.vanillaplus.satchel.a.2"));
+			tooltip.add(StringHelper.localizeFormat("info.vanillaplus.satchel.b." + getMode(stack), StringHelper.getKeyName(KeyBindingItemMultiMode.INSTANCE.getKey())));
+			return;
+		}
 		if (isCreative(stack)) {
 			tooltip.add(StringHelper.getInfoText("info.vanillaplus.satchel.a.c"));
 			tooltip.add(StringHelper.localize("info.vanillaplus.satchel.a.1"));
@@ -119,6 +126,13 @@ public class ItemSatchel extends ItemMulti implements IInitializer, IColorableIt
 	}
 
 	@Override
+	public void onUpdate(ItemStack stack, World world, Entity entity, int itemSlot, boolean isSelected) {
+		if (isVoid(stack) && stack.getTagCompound() != null && stack.getTagCompound().hasKey("Random")) {
+			stack.getTagCompound().removeTag("Random");
+		}
+	}
+
+	@Override
 	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
 
 		return !EnumEnchantmentType.BREAKABLE.equals(enchantment.type) && super.canApplyAtEnchantingTable(stack, enchantment);
@@ -133,7 +147,7 @@ public class ItemSatchel extends ItemMulti implements IInitializer, IColorableIt
 	@Override
 	public boolean isEnchantable(ItemStack stack) {
 
-		return true;
+		return !isVoid(stack);
 	}
 
 	@Override
@@ -240,6 +254,11 @@ public class ItemSatchel extends ItemMulti implements IInitializer, IColorableIt
 		return EnchantmentHelper.getEnchantmentLevel(CoreEnchantments.holding, stack) > 0;
 	}
 
+	public static boolean isVoid(ItemStack stack) {
+
+		return ItemHelper.getItemDamage(stack) == VOID;
+	}
+
 	public static int getLevel(ItemStack stack) {
 
 		if (!typeMap.containsKey(ItemHelper.getItemDamage(stack))) {
@@ -250,7 +269,7 @@ public class ItemSatchel extends ItemMulti implements IInitializer, IColorableIt
 
 	public static int getStorageIndex(ItemStack stack) {
 
-		if (!typeMap.containsKey(ItemHelper.getItemDamage(stack))) {
+		if (isVoid(stack) || !typeMap.containsKey(ItemHelper.getItemDamage(stack))) {
 			return 0;
 		}
 		int level = typeMap.get(ItemHelper.getItemDamage(stack)).level;
@@ -273,7 +292,14 @@ public class ItemSatchel extends ItemMulti implements IInitializer, IColorableIt
 		ItemStack eventItem = event.getItem().getItem();
 
 		if (wrapper.getFilter().matches(eventItem)) {
-			if (!(eventItem.getItem() instanceof IInventoryContainerItem) || ((IInventoryContainerItem) eventItem.getItem()).getSizeInventory(stack) <= 0) {
+			if (isVoid(stack)) {
+				eventItem.setCount(0);
+				stack.setAnimationsToGo(5);
+				EntityPlayer player = event.getEntityPlayer();
+				player.world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.PLAYERS, 0.2F, (MathHelper.RANDOM.nextFloat() - MathHelper.RANDOM.nextFloat()) * 0.7F + 1.0F);
+				stack.getTagCompound().setInteger("Random", MathHelper.RANDOM.nextInt());
+				return true;
+			} else if (!(eventItem.getItem() instanceof IInventoryContainerItem) || ((IInventoryContainerItem) eventItem.getItem()).getSizeInventory(stack) <= 0) {
 				int count = eventItem.getCount();
 				InventoryContainerItemWrapper inv = new InventoryContainerItemWrapper(stack);
 				for (int i = 0; i < inv.getSizeInventory(); i++) {
@@ -382,6 +408,7 @@ public class ItemSatchel extends ItemMulti implements IInitializer, IColorableIt
 		satchelGold = addEntryItem(2, "standard2", 2, EnumRarity.UNCOMMON);
 		satchelDiamond = addEntryItem(3, "standard3", 3, EnumRarity.UNCOMMON);
 		satchelResonant = addEntryItem(4, "standard4", 4, EnumRarity.RARE);
+		satchelVoid = addEntryItem(VOID, "void", 4, EnumRarity.UNCOMMON);
 
 		return true;
 	}
@@ -399,6 +426,14 @@ public class ItemSatchel extends ItemMulti implements IInitializer, IColorableIt
 				" I ",
 				'I', Items.LEATHER,
 				'X', "blockWool"
+		);
+		addShapedRecipe(satchelVoid,
+				" R ",
+				"IXI",
+				"R R",
+				'I', "cobblestone",
+				'R', Items.LEATHER,
+				'X', Items.LAVA_BUCKET
 		);
 		// @formatter:on
 
@@ -460,6 +495,8 @@ public class ItemSatchel extends ItemMulti implements IInitializer, IColorableIt
 
 	private static TIntObjectHashMap<TypeEntry> typeMap = new TIntObjectHashMap<>();
 
+	public static final int VOID = 100;
+
 	public static final int TINT_INDEX_0 = 2;
 	public static final int TINT_INDEX_1 = 3;
 
@@ -472,5 +509,7 @@ public class ItemSatchel extends ItemMulti implements IInitializer, IColorableIt
 	public static ItemStack satchelGold;
 	public static ItemStack satchelDiamond;
 	public static ItemStack satchelResonant;
+
+	public static ItemStack satchelVoid;
 
 }

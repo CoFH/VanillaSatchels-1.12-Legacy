@@ -16,6 +16,8 @@ import java.util.UUID;
 
 public class GuiSatchel extends GuiContainerCore {
 
+	boolean isVoid;
+
 	boolean secure;
 	UUID playerName;
 	int storageIndex;
@@ -23,6 +25,9 @@ public class GuiSatchel extends GuiContainerCore {
 	public GuiSatchel(InventoryPlayer inventory, ContainerSatchel container) {
 
 		super(container);
+
+		isVoid = ItemSatchel.isVoid(container.getContainerStack());
+
 		secure = SecurityHelper.isSecure(container.getContainerStack());
 		playerName = SecurityHelper.getID(inventory.player);
 		storageIndex = ItemSatchel.getStorageIndex(container.getContainerStack());
@@ -34,7 +39,11 @@ public class GuiSatchel extends GuiContainerCore {
 		xSize = 14 + 18 * MathHelper.clamp(storageIndex, 9, 14);
 		ySize = 112 + 18 * MathHelper.clamp(storageIndex, 2, 9);
 
-		generateInfo("tab.vanillaplus.storage.satchel");
+		if (isVoid) {
+			generateInfo("tab.vanillaplus.storage.satchel_v");
+		} else {
+			generateInfo("tab.vanillaplus.storage.satchel");
+		}
 
 		if (container.getContainerStack().isItemEnchantable() && !ItemSatchel.hasHoldingEnchant(container.getContainerStack())) {
 			myInfo += "\n\n" + StringHelper.localize("tab.vanillaplus.storage.enchant");

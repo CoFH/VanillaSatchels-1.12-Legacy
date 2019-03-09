@@ -78,6 +78,11 @@
 				"textures": {
 					"layer0": "vanillasatchels:items/satchel/satchel_4"
 				}
+			},
+			"void": {
+				"textures": {
+					"layer0": "vanillasatchels:items/satchel/satchel_v"
+				}
 			}
 		}
 	}
