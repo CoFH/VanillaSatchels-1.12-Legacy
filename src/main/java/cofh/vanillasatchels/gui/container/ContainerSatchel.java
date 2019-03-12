@@ -11,6 +11,7 @@ import cofh.core.util.helpers.MathHelper;
 import cofh.core.util.helpers.SecurityHelper;
 import cofh.core.util.helpers.StringHelper;
 import cofh.vanillasatchels.ItemSatchel;
+import cofh.vanillasatchels.gui.slot.SlotSatchelVoid;
 import com.mojang.authlib.GameProfile;
 import invtweaks.api.container.ChestContainer;
 import invtweaks.api.container.ChestContainer.RowSizeCallback;
@@ -31,12 +32,16 @@ public class ContainerSatchel extends ContainerInventoryItem implements ISecurab
 
 	static final String NAME = "item.vanillaplus.satchel.name";
 
+	boolean isVoid;
+
 	int storageIndex;
 	int rowSize;
 
 	public ContainerSatchel(ItemStack stack, InventoryPlayer inventory) {
 
 		super(stack, inventory);
+
+		isVoid = ItemSatchel.isVoid(stack);
 
 		storageIndex = ItemSatchel.getStorageIndex(stack);
 		rowSize = MathHelper.clamp(storageIndex, 9, 14);
@@ -48,6 +53,12 @@ public class ContainerSatchel extends ContainerInventoryItem implements ISecurab
 		bindPlayerInventory(inventory);
 
 		switch (storageIndex) {
+			case 0:
+				if (isVoid) {
+					addSlotToContainer(new SlotSatchelVoid(containerWrapper, 0, 80, 26));
+				}
+				rowSize = 1;
+				break;
 			case 1:
 				yOffset += 9;
 				for (int i = 0; i < 9; i++) {
